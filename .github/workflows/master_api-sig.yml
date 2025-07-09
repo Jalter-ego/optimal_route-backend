@@ -86,4 +86,4 @@ jobs:
           app-name: 'api-sig'
           slot-name: 'Production'
           package: .
-          
+          startup-command: 'node dist/main.js'
