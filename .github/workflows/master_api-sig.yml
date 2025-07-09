@@ -33,6 +33,18 @@ jobs:
       - name: Verify build output
         run: ls -la dist/
 
+      - name: Create .env file
+        run: |
+          echo "NODE_ENV=production" > .env
+          echo "PORT=${{ secrets.PORT }}"  >> .env
+          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}"  >> .env
+          echo "DATABASE_PORT=${{ secrets.DATABASE_PORT }}"  >> .env
+          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}"  >> .env
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}"  >> .env
+          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}"  >> .env
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}"  >> .env
+          echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}"  >> .env
+
       - name: Clean dev dependencies
         run: npm prune --production
 
